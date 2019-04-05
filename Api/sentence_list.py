@@ -81,7 +81,7 @@ def vector_Similarity(sentence):
 		#getting the vector of query sentence
 		Vector1  = get_vector(sentence_id)
 		#getting the sentence id of all the sentences.
-		query = "SELECT Sid,Tid FROM Sentences"
+		query = "SELECT Sid,Did FROM Sentences"
 		mycursor.execute(query)
 		documents = []
 		for (Sid,Tid) in mycursor:
@@ -120,7 +120,7 @@ def Doc_details(doc_ids):
 	doc_list=[]
 	for each_id in doc_ids:
 		if each_id is not None:
-			query = "SELECT * FROM Docs WHERE Tid = {} LIMIT 1".format(int(each_id))
+			query = "SELECT * FROM Docs WHERE Did = {} LIMIT 1".format(int(each_id))
 			mycursor.execute(query)
 			myresult = mycursor.fetchone()
 			doc = {}
