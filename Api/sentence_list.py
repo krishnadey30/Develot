@@ -89,7 +89,7 @@ def vector_Similarity(sentence):
 	else:
 		all_doc_ids = []
 
-	return all_doc_ids
+	return Doc_details(all_doc_ids)
 
 
 
