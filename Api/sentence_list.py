@@ -124,7 +124,7 @@ def Doc_details(doc_ids):
 			mycursor.execute(query)
 			myresult = mycursor.fetchone()
 			doc = {}
-			doc['documentationPageUrl'] = myresult[1]
+			doc['documentationUrl'] = myresult[1]
 			doc_list.append(doc)
 	return doc_list
 
