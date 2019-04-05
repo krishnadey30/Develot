@@ -44,7 +44,7 @@ class Result(object):
 class Add_Doc(object):
 	def on_post(self,req,resp):
 		doc_data = req.stream.read()
-		data = json.loads(tool_data.decode('utf8').replace("'",'"'))
+		data = json.loads(doc_data.decode('utf8').replace("'",'"'))
 		result = Add_Doc_to_database.delay(data['doc'])
 		while(result.ready()==False):
 			pass

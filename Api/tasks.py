@@ -35,7 +35,7 @@ mysql> desc Sentences;
 | Sid              | int(11)   | NO   | PRI | NULL              | auto_increment              |
 | sentence         | text      | NO   |     | NULL              |                             |
 | Date_of_Creation | timestamp | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
-| Tid              | int(11)   | YES  | MUL | NULL              |                             |
+| Did              | int(11)   | YES  | MUL | NULL              |                             |
 +------------------+-----------+------+-----+-------------------+-----------------------------+
 4 rows in set (0.01 sec)
 
@@ -78,7 +78,7 @@ def create_vector(sentence,tid=None):
 		mycursor = mydb.cursor()
 		#inserting the sentence in database
 		if tid != None:
-			sql = "INSERT INTO Sentences(sentence, Date_of_Creation,Tid) VALUES (%s,%s,%s)"
+			sql = "INSERT INTO Sentences(sentence, Date_of_Creation,Did) VALUES (%s,%s,%s)"
 			val=(sentence,timestamp,tid)
 		else:
 			sql = "INSERT INTO Sentences(sentence, Date_of_Creation) VALUES (%s,%s)"
@@ -113,7 +113,7 @@ def Add_Doc_to_database(doc):
 	mydb.commit()
 	#retriving the id of the inserted sentence
 	id_no=mycursor.lastrowid
-	para = ast.literal_eval(doc['para'])
+	para = doc['para']
 	result = create_vector.delay(para,id_no)
 	# waiting till final sentence is completed
 	while(result.ready()==False):
