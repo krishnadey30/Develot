@@ -5,7 +5,6 @@ import numpy as np
 import json,arrow
 import datetime as datetime
 import mysql.connector as connector
-import ast
 
 #specifying the URL of the message broker we are using. Here using RabbitMQ (also the default option).
 app = Celery('tasks', backend='rpc://', broker='pyamqp://develot:develot@localhost:5672/develot_host')
