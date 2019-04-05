@@ -2,6 +2,13 @@ import falcon,json
 from sentence_list import vector_Similarity,Doc_details
 from tasks import Add_Doc_to_database
 
+
+class TestResource(object):
+    def on_get(self, req, res):
+        """Handles all GET requests."""
+        res.status = falcon.HTTP_200  # This is the default status
+        res.body = ('This is me, Falcon, serving a resource!')
+
 class Search(object):
 	def on_get(self, req, resp):
 		doc = {}
