@@ -65,7 +65,7 @@ def database():
 #defining the task
 
 @app.task
-def create_vector(sentence,tid=None):
+def create_vector(sentence,did=None):
 	embed=load_module() #loading the module
 	utc = arrow.utcnow()
 	timestamp = utc.to('Asia/Kolkata').format("YYYY-MM-DD HH:mm:ss") #getting the timestamp
@@ -77,7 +77,7 @@ def create_vector(sentence,tid=None):
 		mydb=database()
 		mycursor = mydb.cursor()
 		#inserting the sentence in database
-		if tid != None:
+		if did != None:
 			sql = "INSERT INTO Sentences(sentence, Date_of_Creation,Did) VALUES (%s,%s,%s)"
 			val=(sentence,timestamp,tid)
 		else:
