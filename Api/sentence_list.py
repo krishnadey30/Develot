@@ -97,13 +97,14 @@ def Doc_details(doc_ids):
 	mydb=database()
 	mycursor = mydb.cursor()
 	doc_list=[]
-	for each_id in doc_ids:
+	for each_id in doc_ids[:4]:
 		if each_id is not None:
 			query = "SELECT * FROM Docs WHERE Did = {} LIMIT 1".format(int(each_id))
 			mycursor.execute(query)
 			myresult = mycursor.fetchone()
 			doc = {}
 			doc['documentationUrl'] = myresult[1]
+			doc['para'] = myresult[2]
 			doc_list.append(doc)
 	return doc_list
 
