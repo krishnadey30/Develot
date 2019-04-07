@@ -104,6 +104,7 @@ mysql> CREATE TABLE Sentences(Sid INT PRIMARY KEY NOT NULL AUTO_INCREMENT,senten
 | Date_of_Creation | timestamp | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
 | Did              | int(11)   | YES  | MUL | NULL              |                             |
 
+
 #### Vector_data
 ```mysql
 mysql> CREATE TABLE Vector_data(data_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,value DOUBLE(14,13) NOT NULL,Sid INT NOT NULL,FOREIGN KEY(Sid) REFERENCES Sentences(Sid));
@@ -115,3 +116,22 @@ mysql> CREATE TABLE Vector_data(data_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 | value   | double(14,13) | NO   |     | NULL    |                |
 | Sid     | int(11)       | NO   | MUL | NULL    |                |
 
+
+### Installing the Consine Similarity module
+```bash
+$ cd Develot/Api
+$ pip install .
+```
+
+### Running the celery workers
+```bash
+$ celery -A tasks worker -loglevel=INFO --concurrency=10
+```
+
+### Running Falcon Server
+* Open a new terminal session
+* Active the virtual enviroment
+*  `cd Develot/Api`
+``` bash
+$ gunicorn -b localhost:5000 app --reload
+```
