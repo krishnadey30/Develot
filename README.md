@@ -138,12 +138,9 @@ $ gunicorn -b localhost:5000 app --reload
 
 
 ## Using the API
-Currently the API is hosted for evaluation purpose on
-http://35.167.192.186
-
 ### API Endpoints
 #### SEARCH
-*http://35.167.192.186/search*
+*http://localhost:5000/search*
 
 * HTTP Request: **PUT**
 
@@ -151,7 +148,7 @@ http://35.167.192.186
   * key: "sentence"
   * value: "Any Sentence you want to search"
 #### Add Document
-*http://35.167.192.186/add_doc*
+*http://localhost:5000/add_doc*
 
 * HTTP Request: **POST**
 
