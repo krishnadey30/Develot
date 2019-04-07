@@ -17,23 +17,32 @@ $ sudo apt-get install mysql-server
 Note: set the password of the mysql as **root**
 
 ### Installing RabbitMQ 
-`$ sudo apt-get install rabbitmq-server`
+``` bash
+$ sudo apt-get install rabbitmq-server
+```
 
 #### Creating a new None Administrative User
-`$ sudo rabbitmqctl add_user develot develot`
+``` bash
+$ sudo rabbitmqctl add_user develot develot
+```
 
 This command instructs the RabbitMQ broker to create a (non-administrative) user named `develot` with (initial) password `develot`.
 #### Creating a new virtual host
-`$ sudo rabbitmqctl add_vhost develot_host`
-
+``` bash
+$ sudo rabbitmqctl add_vhost develot_host
+```
 This command instructs the RabbitMQ broker to create a new virtual host called “sample_host”.
 #### Making new user administrator
-`$ sudo rabbitmqctl set_user_tags develot administrator`
+``` bash
+$ sudo rabbitmqctl set_user_tags develot administrator
+```
 
 This command instructs the RabbitMQ broker to ensure the user named “krishna” is an administrator.
 
 #### Seting user permissions
-`$ sudo rabbitmqctl set_permissions -p develot_host develot ".*" ".*" ".*"`
+``` bash
+$ sudo rabbitmqctl set_permissions -p develot_host develot ".*" ".*" ".*"
+```
 
 This command instructs the RabbitMQ broker to grant the user named `develot` access to the virtual host called `develot_host`, with configure ,write and read permissions on all resources.
 
@@ -94,4 +103,15 @@ mysql> CREATE TABLE Sentences(Sid INT PRIMARY KEY NOT NULL AUTO_INCREMENT,senten
 | sentence         | text      | NO   |     | NULL              |                             |
 | Date_of_Creation | timestamp | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
 | Did              | int(11)   | YES  | MUL | NULL              |                             |
+
+#### Vector_data
+```mysql
+mysql> CREATE TABLE Vector_data(data_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,value DOUBLE(14,13) NOT NULL,Sid INT NOT NULL,FOREIGN KEY(Sid) REFERENCES Sentences(Sid));
+```
+
+| Field   | Type          | Null | Key | Default | Extra          |
+|---------|---------------|------|-----|---------|----------------|
+| data_id | int(11)       | NO   | PRI | NULL    | auto_increment |
+| value   | double(14,13) | NO   |     | NULL    |                |
+| Sid     | int(11)       | NO   | MUL | NULL    |                |
 
