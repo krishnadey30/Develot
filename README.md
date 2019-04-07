@@ -130,8 +130,37 @@ $ celery -A tasks worker -loglevel=INFO --concurrency=10
 
 ### Running Falcon Server
 * Open a new terminal session
-* Active the virtual enviroment
+* Activate the virtual enviroment
 *  `cd Develot/Api`
 ``` bash
 $ gunicorn -b localhost:5000 app --reload
 ```
+
+
+## Using the API
+Currently the API is hosted for evaluation purpose on
+http://35.167.192.186
+
+### API Endpoints
+#### SEARCH
+*http://35.167.192.186/search*
+
+* HTTP Request: **PUT**
+
+* Parameters:
+  * key: "sentence"
+  * value: "Any Sentence you want to search"
+#### Add Document
+*http://35.167.192.186/add_doc*
+
+* HTTP Request: **POST**
+
+* BODY:
+  ```json
+  {
+    "doc":{
+            "url": "url_of_the_document",
+            "para": "the paragraph"
+          }
+  }
+  ```
