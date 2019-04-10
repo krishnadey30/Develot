@@ -21,7 +21,7 @@ def main():
 		while(result.ready()==False):
 			pass
 		mycursor2 = mydb.cursor(buffered=True)
-		query1 = "UPDATE Docs SET vector_created SET vector_created = %s where Did = %s"
+		query1 = "UPDATE Docs SET vector_created = %s where Did = %s"
 		mycursor2.execute(query1,(True,Did))
 
 if __name__ == '__main__':
