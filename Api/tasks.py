@@ -78,7 +78,7 @@ def create_vector(sentence,did=None):
 		#inserting the sentence in database
 		if did != None:
 			sql = "INSERT INTO Sentences(sentence, Date_of_Creation,Did) VALUES (%s,%s,%s)"
-			val=(sentence,timestamp,tid)
+			val=(sentence,timestamp,did)
 		else:
 			sql = "INSERT INTO Sentences(sentence, Date_of_Creation) VALUES (%s,%s)"
 			val=(sentence,timestamp)
