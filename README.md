@@ -125,7 +125,7 @@ $ pip install .
 
 ### Running the celery workers
 ```bash
-$ celery -A tasks worker -loglevel=INFO --concurrency=10
+$ celery -A tasks worker --loglevel=INFO --concurrency=10
 ```
 
 ### Running Falcon Server
