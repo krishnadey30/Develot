@@ -13,7 +13,7 @@ def database():
 def main():
 	mydb=database()
 	mycursor = mydb.cursor(buffered=True)
-	query = "SELECT Did,para FROM Docs"
+	query = "SELECT Did,para FROM Docs where vector_created = 0"
 	mycursor.execute(query)
 	for (Did,para) in mycursor:
 		Did = int(Did)
