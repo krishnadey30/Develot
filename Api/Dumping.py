@@ -17,7 +17,7 @@ def main():
 	json_data = read_json()
 	mydb=database()
 	mycursor = mydb.cursor()
-	for doc in json:
+	for doc in json_data:
 		sql =  "INSERT INTO Docs(Documentation_Url,para) Values (%s,%s)"
 		val = (doc['link'],doc['para'])
 		mycursor.execute(sql,val)

@@ -82,7 +82,7 @@ mysql> USE develot;
 ### Create Tables
 #### Docs
 ```mysql
-mysql> CREATE TABLE Docs(Did INT NOT NULL PRIMARY KEY AUTO_INCREMENT,Documentation_Url VARCHAR(1200),para TEXT NOT NULL); 
+mysql> CREATE TABLE Docs(Did INT NOT NULL PRIMARY KEY AUTO_INCREMENT,Documentation_Url VARCHAR(1200),para LONGTEXT NOT NULL, vector_created BOOL default false ); 
 ```
 
 | Field             | Type          | Null | Key | Default | Extra          |
@@ -90,6 +90,7 @@ mysql> CREATE TABLE Docs(Did INT NOT NULL PRIMARY KEY AUTO_INCREMENT,Documentati
 | Did               | int(11)       | NO   | PRI | NULL    | auto_increment |
 | Documentation_Url | varchar(1200) | YES  |     | NULL    |                |
 | para              | text          | NO   |     | NULL    |                |
+| vector_created    | tinyint(1)    | YES  |     | 0       |                |
 
 
 #### Sentences
