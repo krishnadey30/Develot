@@ -11,8 +11,8 @@ def database():
 def read_json():
 	filename = "django.json"
 	with open(filename, 'r') as f:
-        datastore = json.load(f)
-    return datastore
+		datastore = json.load(f)
+	return datastore
 def main():
 	json_data = read_json()
 	mydb=database()
