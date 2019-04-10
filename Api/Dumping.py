@@ -1,4 +1,5 @@
 import json
+import mysql.connector as connector
 def database():
     mydb = connector.connect(
             host="localhost",
@@ -11,7 +12,7 @@ def read_json():
 	filename = "django.json"
 	with open(filename, 'r') as f:
         datastore = json.load(f)
-    	return datastore
+    return datastore
 def main():
 	json_data = read_json()
 	mydb=database()

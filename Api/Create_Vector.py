@@ -1,5 +1,5 @@
 from tasks import create_vector
-
+import mysql.connector as connector
 def database():
     mydb = connector.connect(
             host="localhost",
