@@ -21,10 +21,12 @@ def main():
 		while(result.ready()==False):
 			pass
 		if(result.status == "SUCCESS"):
-			mycursor2 = mydb.cursor(buffered=True)
+			mydb2 = database()
+			mycursor2 = mydb2.cursor(buffered=True)
 			query1 = "UPDATE Docs SET vector_created = 1 where Did = %s"
 			val = (Did,)
 			mycursor2.execute(query1,val)
+			mydb2.commit()
 		else:
 			print(Did)
 
