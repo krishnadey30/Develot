@@ -67,7 +67,7 @@ def vector_Similarity(sentence):
 	#getting the vector of query sentence
 	Vector1  = get_vector(sentence_id)
 	#getting the sentence id of all the sentences.
-	query = "SELECT Sid,Did FROM Sentences"
+	query = "SELECT Sid,Did FROM Sentences where Did IS NOT Null"
 	mycursor.execute(query)
 	documents = []
 	for (Sid,Tid) in mycursor:
