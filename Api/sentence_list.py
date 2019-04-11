@@ -75,9 +75,12 @@ def vector_Similarity(sentence):
 		if Sid!=sentence_id:
 			# getting the vector of a Sentence
 			Vector2 = get_vector(Sid)
-			#calling the C function for finding the angle between the query vector and different sentence
-			angle = VectorModule.Product(Vector1,Vector2)
-			documents.append((Tid,angle))
+			if(len(Vector2)==512):
+				#calling the C function for finding the angle between the query vector and different sentence
+				angle = VectorModule.Product(Vector1,Vector2)
+				documents.append((Tid,angle))
+			else:
+				print(Sid)
 
 	#sorting the list of ids based on the angle between them
 	documents = sorted(documents,key = lambda x:-x[1])

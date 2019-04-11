@@ -20,9 +20,13 @@ def main():
 		result = create_vector.delay(para,Did)
 		while(result.ready()==False):
 			pass
-		mycursor2 = mydb.cursor(buffered=True)
-		query1 = "UPDATE Docs SET vector_created = %s where Did = %s"
-		mycursor2.execute(query1,(True,Did))
+		if(result.status == "SUCCESS"):
+			mycursor2 = mydb.cursor(buffered=True)
+			query1 = "UPDATE Docs SET vector_created = 1 where Did = %s"
+			val = (Did)
+			mycursor2.execute(query1,val)
+		else:
+			print(Did)
 
 if __name__ == '__main__':
 	main()
