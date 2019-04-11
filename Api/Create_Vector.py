@@ -23,7 +23,7 @@ def main():
 		if(result.status == "SUCCESS"):
 			mycursor2 = mydb.cursor(buffered=True)
 			query1 = "UPDATE Docs SET vector_created = 1 where Did = %s"
-			val = (Did)
+			val = (Did,)
 			mycursor2.execute(query1,val)
 		else:
 			print(Did)
